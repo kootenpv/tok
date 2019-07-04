@@ -11,7 +11,7 @@ Using the aho-corasick algorithm makes it a novelty and allows it to be both exp
 
 The heavy lifting is done by [textsearch](https://github.com/kootenpv/textsearch) and [pyahocorasick](https://github.com/WojciechMula/pyahocorasick), allowing this to be written in only ~200 lines of code.
 
-Contrary to regex-based approaches, it will go over each character in a text only once. Read below about how this works.
+Contrary to regex-based approaches, it will go over each character in a text only once. Read [below](#how-it-works) about how this works.
 
 ### Installation
 
