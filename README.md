@@ -63,7 +63,7 @@ You can add your own ideas to the tokenizer by using:
 - `t.strip(x, reason)`: Whenever it finds x, it will remove it without splitting.
 
 ```python
-tokenizer.drop("bla", "bla is not needed")
+t.drop("bla", "bla is not needed")
 t.word_tokenize("Please remove bla, thank you")
 ['Please', 'remove', ',', 'thank', 'you']
 ```
