@@ -1,10 +1,41 @@
 __project__ = "tokenize"
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 __repo__ = "https://github.com/kootenpv/tok"
 
 import string
 from textsearch import TextSearch
-from contractions import contractions_dict
+from contractions import contractions_dict, leftovers_dict
+
+ABBREVS = (
+    "a.m.",
+    "Adm.",
+    "Bros.",
+    "co.",
+    "Corp.",
+    "D.C.",
+    "Dr.",
+    "e.g.",
+    "Gen.",
+    "Gov.",
+    "i.e.",
+    "Inc.",
+    "Jr.",
+    "Ltd.",
+    "Md.",
+    "Messrs.",
+    "Mo.",
+    "Mont.",
+    "Mr.",
+    "Mrs.",
+    "Ms.",
+    "p.m.",
+    "Ph.D.",
+    "Rep.",
+    "Rev.",
+    "Sen.",
+    "St.",
+    "vs.",
+)
 
 
 class Tokenizer:
@@ -19,6 +50,7 @@ class Tokenizer:
         protected_words=None,
         contractions=True,
         language="en",
+        abbrevs=ABBREVS,
     ):
         # set() set() should fallback to just using __iter__ of automaton for a speedboost
         if language != "en" and contractions:
@@ -32,6 +64,7 @@ class Tokenizer:
         self.eol = eol
         self.currencies = currencies or []
         self.protected_words = protected_words or []
+        self.abbrevs = abbrevs
         self.explain_dict = {}
         self.setup()
 
@@ -50,13 +83,17 @@ class Tokenizer:
             self.add_domain_handler()
         if self.contractions:
             if self.contractions == True:
-                self.contractions = contractions_dict
+                self.contractions = {}
+                self.contractions.update(contractions_dict)
+                self.contractions.update(leftovers_dict)
             self.add_words(self.contractions)
+        if self.abbrevs:
+            self.add_words(self.abbrevs)
 
     def add_words(self, words):
         # [("cannot", "can not"), ("can't", "can n't"), ("mr.", "mr.")]
         words = words.items() if isinstance(words, dict) else words
-        if words and isinstance(words, list) and isinstance(words[0], str):
+        if words and isinstance(words, (list, set, tuple)) and isinstance(words[0], str):
             words = [(x, x) for x in words]
         for x, y in words:
             REASON_AS_IS = "protected word: adds word as is, prevents splitting it."
