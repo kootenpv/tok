@@ -101,7 +101,8 @@ class Tokenizer:
             REASON_TITLE = "protected word: adds word titlecased, prevents splitting it."
             self.add(x, y, REASON_AS_IS)
             self.add(x.upper(), y.upper(), REASON_UPPER)
-            self.add(x[0].upper() + x[1:], y[0].upper() + y[1:], REASON_TITLE)
+            if y:
+                self.add(x[0].upper() + x[1:], y[0].upper() + y[1:], REASON_TITLE)
 
     def add_domain_handler(self):
         import re
