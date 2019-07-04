@@ -86,11 +86,12 @@ t.explain_dict
 ### How it works
 
 It will always only keep the longest match. By introducing a space in your tokens, it will make it be split.
+
 If you consider how the tokenization of `.` works, see here:
 
-When it finds a ` A.` it will make it ` A.` (single letter abbreviations)
-When it finds a `.0` it will make it `.0` (numbers)
-When it finds a `.`, it will make it ` . ` (thus making a split)
+- When it finds a ` A.` it will make it ` A.` (single letter abbreviations)
+- When it finds a `.0` it will make it `.0` (numbers)
+- When it finds a `.`, it will make it ` . ` (thus making a split)
 
 If you want to make sure something including a dot stays, you can use for example:
 

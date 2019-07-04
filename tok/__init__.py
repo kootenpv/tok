@@ -1,5 +1,5 @@
 __project__ = "tokenize"
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 __repo__ = "https://github.com/kootenpv/tok"
 
 import string
