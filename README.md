@@ -81,4 +81,6 @@ t.explain_dict
 
 ### Contributing
 
-It would be greatly appreciated if you want to contribute to contribute to this library, or for example to add more languages to [contractions](https://github.com/kootenpv/contractions).
+It would be greatly appreciated if you want to contribute to this library.
+
+It would also be great to add [contractions](https://github.com/kootenpv/contractions) for other languages.
