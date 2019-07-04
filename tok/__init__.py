@@ -1,5 +1,5 @@
 __project__ = "tokenize"
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __repo__ = "https://github.com/kootenpv/tok"
 
 import string
@@ -56,7 +56,7 @@ class Tokenizer:
     def add_words(self, words):
         # [("cannot", "can not"), ("can't", "can n't"), ("mr.", "mr.")]
         words = words.items() if isinstance(words, dict) else words
-        if words and isinstance(words[0], str):
+        if words and isinstance(words, list) and isinstance(words[0], str):
             words = [(x, x) for x in words]
         for x, y in words:
             REASON_AS_IS = "protected word: adds word as is, prevents splitting it."
