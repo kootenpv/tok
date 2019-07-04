@@ -1,5 +1,5 @@
 __project__ = "tokenize"
-__version__ = "0.0.5"
+__version__ = "0.0.8"
 __repo__ = "https://github.com/kootenpv/tok"
 
 import string
@@ -8,32 +8,32 @@ from contractions import contractions_dict, leftovers_dict
 
 ABBREVS = (
     "a.m.",
-    "Adm.",
-    "Bros.",
+    "adm.",
+    "bros.",
     "co.",
-    "Corp.",
-    "D.C.",
-    "Dr.",
+    "corp.",
+    "d.c.",
+    "dr.",
     "e.g.",
-    "Gen.",
-    "Gov.",
+    "gen.",
+    "gov.",
     "i.e.",
-    "Inc.",
-    "Jr.",
-    "Ltd.",
-    "Md.",
-    "Messrs.",
-    "Mo.",
-    "Mont.",
-    "Mr.",
-    "Mrs.",
-    "Ms.",
+    "inc.",
+    "jr.",
+    "ltd.",
+    "md.",
+    "messrs.",
+    "mo.",
+    "mont.",
+    "mr.",
+    "mrs.",
+    "ms.",
     "p.m.",
-    "Ph.D.",
-    "Rep.",
-    "Rev.",
-    "Sen.",
-    "St.",
+    "ph.d.",
+    "rep.",
+    "rev.",
+    "sen.",
+    "st.",
     "vs.",
 )
 
@@ -91,7 +91,6 @@ class Tokenizer:
             self.add_words(self.abbrevs)
 
     def add_words(self, words):
-        # [("cannot", "can not"), ("can't", "can n't"), ("mr.", "mr.")]
         words = words.items() if isinstance(words, dict) else words
         if words and isinstance(words, (list, set, tuple)) and isinstance(words[0], str):
             words = [(x, x) for x in words]
