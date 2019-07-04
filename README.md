@@ -5,13 +5,15 @@
 
 Fastest and most complete/customizable tokenizer in Python.
 
-Roughly 25x faster than spacy's and nltk's regex based tokenizers.
+It is roughly 25x faster than spacy's and nltk's regex based tokenizers.
+
+Using the aho-corasick algorithm makes it a novelty and allows it to be both explainable and fast in how it will split.
+
+The heavy lifting is done by [textsearch](https://github.com/kootenpv/textsearch) and [pyahocorasick](https://github.com/WojciechMula/pyahocorasick), allowing this to be written in only ~200 lines of code.
 
 ### Installation
 
     pip install tok
-
-It depends on [textsearch](https://github.com/kootenpv/textsearch).
 
 ### Usage
 
