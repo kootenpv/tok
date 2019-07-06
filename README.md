@@ -3,7 +3,7 @@
 [![PyPI](https://img.shields.io/pypi/v/tok.svg?style=flat-square)](https://pypi.python.org/pypi/tok/)
 [![PyPI](https://img.shields.io/pypi/pyversions/tok.svg?style=flat-square)](https://pypi.python.org/pypi/tok/)
 
-Fastest and most complete/customizable tokenizer in Python.
+Fast and most complete/customizable tokenizer in Python.
 
 It is roughly 25x faster than spacy's and nltk's regex based tokenizers.
 
