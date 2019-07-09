@@ -140,7 +140,7 @@ class Tokenizer:
                 self.add("\n" * i, " \n ", "merges newlines")
 
         for s in "!.?-\n":
-            self.split(s, "Splits on '{}' and creating a new sentence.".format(s))
+            self.add(s, s + "\n", "Splits on '{}' and creating a new sentence.".format(s))
 
         self.split("- ")
 
@@ -163,7 +163,8 @@ class Tokenizer:
         # for x in string.ascii_letters:
         #     self.tokenizer.add("\n" + x, "\n" + x)
 
-        self.split(",")
+        for s in ":;,":
+            self.split(s, "Splits on '{}' (punctuation)")
 
         # quotes (make sure we add all the exeptions)
         self.split("'")
@@ -208,9 +209,10 @@ class Tokenizer:
             for x in keys
         ]
 
-    def remove(self, x, reason=None):
-        self.tokenizer.remove(x)
-        self.explain_dict[x] = reason or "removing '{}'".format(x)
+    def remove(self, x):
+        if x in self.tokenizer:
+            self.tokenizer.remove(x)
+            del self.explain_dict[x]
 
     def add_currencies(self):
         for currency in self.currencies:
