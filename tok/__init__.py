@@ -1,5 +1,5 @@
 __project__ = "tokenize"
-__version__ = "0.0.9"
+__version__ = "0.1.13"
 __repo__ = "https://github.com/kootenpv/tok"
 
 import string
@@ -140,7 +140,7 @@ class Tokenizer:
                 self.add("\n" * i, " \n ", "merges newlines")
 
         for s in "!.?-\n":
-            self.add(s, s + "\n", "Splits on '{}' and creating a new sentence.".format(s))
+            self.add(s, " " + s + "\n", "Splits on '{}' and creating a new sentence.".format(s))
 
         self.split("- ")
 
